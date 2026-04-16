@@ -1,0 +1,223 @@
+/* =========================
+   CSS VARIABLES + FALLBACK
+========================= */
+:root {
+  --main-color: #ff6347;
+}
+
+h2 {
+  color: var(--main-color, red); /* fallback */
+}
+
+/* =========================
+   UNIVERSAL SELECTOR
+========================= */
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* =========================
+   ELEMENT SELECTOR
+========================= */
+body {
+  margin: 0;
+}
+
+/* =========================
+   CLASS SELECTOR
+========================= */
+.section-box {
+  background-color: rgba(255, 99, 71, 0.1);
+}
+
+/* =========================
+   ID SELECTOR
+========================= */
+#attendance {
+  border: 2px solid black;
+}
+
+/* =========================
+   ATTRIBUTE SELECTOR
+========================= */
+input[type="text"] {
+  border: 1px solid blue;
+}
+
+/* =========================
+   COLOR FORMATS
+========================= */
+h1 {
+  color: rgb(255, 99, 71);
+}
+
+h3 {
+  color: #333;
+}
+
+p {
+  color: hsl(200, 50%, 30%);
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+header {
+  background-color: color-mix(in srgb, red 50%, yellow 50%);
+}
+
+/* =========================
+   BOX MODEL (LONG + SHORT)
+========================= */
+section {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  padding: 10px 20px 10px 20px;
+
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+/* shorthand */
+footer {
+  margin: auto;
+  padding: 20px;
+  border: 2px solid black;
+}
+
+/* =========================
+   TEXT
+========================= */
+h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* =========================
+   DISPLAY
+========================= */
+nav ul li {
+  display: inline-block;
+}
+
+hr {
+  display: none;
+}
+
+/* =========================
+   SIZING
+========================= */
+img {
+  width: 200px;
+  max-width: 100%;
+  min-width: 100px;
+}
+
+/* =========================
+   POSITION
+========================= */
+header {
+  position: sticky;
+  top: 0;
+}
+
+footer {
+  position: relative;
+}
+
+/* =========================
+   PSEUDO CLASSES
+========================= */
+a:hover {
+  color: red;
+}
+
+button:active {
+  background-color: gray;
+}
+
+/* =========================
+   FLEXBOX
+========================= */
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   GRID
+========================= */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* =========================
+   MEDIA QUERY (RESPONSIVE)
+========================= */
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   COMBINATORS
+========================= */
+/* descendant */
+section p {
+  font-size: 14px;
+}
+
+/* child */
+nav > ul {
+  list-style: none;
+}
+
+/* adjacent sibling */
+h2 + p {
+  font-style: italic;
+}
+
+/* general sibling */
+h2 ~ p {
+  color: darkblue;
+}
+
+/* =========================
+   COMBINING SELECTORS
+========================= */
+section.section-box {
+  background-color: lightyellow;
+}
+
+/* =========================
+   SELECTOR LIST
+========================= */
+h1, h2, h3 {
+  font-weight: bold;
+}
+
+/* =========================
+   NEW SELECTOR :has()
+========================= */
+section:has(img) {
+  background-color: lightblue;
+}
+
+/* =========================
+   NESTED SELECTORS (2023)
+========================= */
+nav {
+  & ul {
+    padding: 0;
+  }
+}
