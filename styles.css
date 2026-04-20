@@ -1,168 +1,65 @@
 /* =========================
-   CSS VARIABLES + FALLBACK
+   ROOT VARIABLES
 ========================= */
 :root {
   --main-color: #ff6347;
-}
-
-h2 {
-  color: var(--main-color, red); /* fallback */
+  --secondary-color: #333;
+  --bg-light: #f9f9f9;
 }
 
 /* =========================
-   UNIVERSAL SELECTOR
+   GLOBAL RESET
 ========================= */
 * {
+  box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
 
-/* =========================
-   ELEMENT SELECTOR
-========================= */
 body {
   margin: 0;
+  background-color: teal;
+  color: var(--secondary-color);
 }
 
 /* =========================
-   CLASS SELECTOR
-========================= */
-.section-box {
-  background-color: rgba(255, 99, 71, 0.1);
-}
-
-/* =========================
-   ID SELECTOR
-========================= */
-#attendance {
-  border: 2px solid black;
-}
-
-/* =========================
-   ATTRIBUTE SELECTOR
-========================= */
-input[type="text"] {
-  border: 1px solid blue;
-}
-
-/* =========================
-   COLOR FORMATS
+   HEADINGS
 ========================= */
 h1 {
-  color: rgb(255, 99, 71);
+  color: var(--main-color);
+}
+
+h2 {
+  color: var(--main-color);
+  text-align: center;
+  text-decoration: underline;
 }
 
 h3 {
   color: #333;
 }
 
-p {
-  color: hsl(200, 50%, 30%);
+h1, h2, h3 {
+  font-weight: bold;
 }
 
 /* =========================
-   BACKGROUND
+   LAYOUT
 ========================= */
 header {
-  background-color: color-mix(in srgb, red 50%, yellow 50%);
-}
-
-/* =========================
-   BOX MODEL (LONG + SHORT)
-========================= */
-section {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-
-  padding: 10px 20px 10px 20px;
-
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  border-radius: 10px;
-}
-
-/* shorthand */
-footer {
-  margin: auto;
-  padding: 20px;
-  border: 2px solid black;
-}
-
-/* =========================
-   TEXT
-========================= */
-h2 {
-  text-align: center;
-  text-decoration: underline;
-}
-
-/* =========================
-   DISPLAY
-========================= */
-nav ul li {
-  display: inline-block;
-}
-
-hr {
-  display: none;
-}
-
-/* =========================
-   SIZING
-========================= */
-img {
-  width: 200px;
-  max-width: 100%;
-  min-width: 100px;
-}
-
-/* =========================
-   POSITION
-========================= */
-header {
+  background-color: orange; /* replaced color-mix */
+  padding: 15px;
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
-footer {
-  position: relative;
-}
-
-/* =========================
-   PSEUDO CLASSES
-========================= */
-a:hover {
-  color: red;
-}
-
-button:active {
-  background-color: gray;
-}
-
-/* =========================
-   FLEXBOX
-========================= */
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* =========================
-   GRID
-========================= */
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 15px;
+  padding: 15px;
 }
 
-/* =========================
-   MEDIA QUERY (RESPONSIVE)
-========================= */
 @media (max-width: 600px) {
   main {
     grid-template-columns: 1fr;
@@ -170,54 +67,119 @@ main {
 }
 
 /* =========================
-   COMBINATORS
+   NAVBAR
 ========================= */
-/* descendant */
-section p {
-  font-size: 14px;
-}
-
-/* child */
-nav > ul {
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0;
   list-style: none;
+  background-color: #222;
+  margin: 0;
 }
 
-/* adjacent sibling */
-h2 + p {
-  font-style: italic;
+nav ul li {
+  display: inline-block;
 }
 
-/* general sibling */
-h2 ~ p {
-  color: darkblue;
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+nav a:hover {
+  color: var(--main-color);
 }
 
 /* =========================
-   COMBINING SELECTORS
+   SECTIONS
 ========================= */
+section {
+  margin: 10px 5px;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: var(--bg-light);
+}
+
+/* class + element combo */
 section.section-box {
   background-color: lightyellow;
 }
 
 /* =========================
-   SELECTOR LIST
+   TEXT + CONTENT
 ========================= */
-h1, h2, h3 {
-  font-weight: bold;
+p {
+  color: hsl(200, 50%, 30%);
+}
+
+/* combinators */
+section p {
+  font-size: 14px;
+}
+
+h2 + p {
+  font-style: italic;
+}
+
+h2 ~ p {
+  color: darkblue;
 }
 
 /* =========================
-   NEW SELECTOR :has()
+   MEDIA
 ========================= */
-section:has(img) {
-  background-color: lightblue;
+img {
+  width: 200px;
+  max-width: 100%;
+  min-width: 100px;
+  border-radius: 8px;
 }
 
 /* =========================
-   NESTED SELECTORS (2023)
+   FORMS
 ========================= */
-nav {
-  & ul {
-    padding: 0;
-  }
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid blue;
+  border-radius: 5px;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:active {
+  background-color: gray;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  margin: auto;
+  padding: 20px;
+  border: 2px solid black;
+  text-align: center;
+  background-color: #eee;
+}
+
+/* =========================
+   MISC
+========================= */
+hr {
+  display: none;
 }
