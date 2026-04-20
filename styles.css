@@ -1,10 +1,12 @@
 /* =========================
-   ROOT VARIABLES
+   ROOT / THEME
 ========================= */
 :root {
-  --main-color: #ff6347;
-  --secondary-color: #333;
-  --bg-light: #f9f9f9;
+  --primary: #ff6347;
+  --dark: #0f172a;
+  --light: #f8fafc;
+  --card: #ffffff;
+  --accent: #22c55e;
 }
 
 /* =========================
@@ -12,58 +14,38 @@
 ========================= */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: 'Roboto', sans-serif;
 }
 
 body {
-  margin: 0;
-  background-color: teal;
-  color: var(--secondary-color);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: var(--light);
+  line-height: 1.6;
 }
 
 /* =========================
-   HEADINGS
-========================= */
-h1 {
-  color: var(--main-color);
-}
-
-h2 {
-  color: var(--main-color);
-  text-align: center;
-  text-decoration: underline;
-}
-
-h3 {
-  color: #333;
-}
-
-h1, h2, h3 {
-  font-weight: bold;
-}
-
-/* =========================
-   LAYOUT
+   HEADER (GLASS STYLE)
 ========================= */
 header {
-  background-color: orange; /* replaced color-mix */
-  padding: 15px;
   position: sticky;
   top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 20px;
   z-index: 1000;
 }
 
-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  padding: 15px;
+header h1 {
+  color: var(--primary);
+  font-size: 2rem;
 }
 
-@media (max-width: 600px) {
-  main {
-    grid-template-columns: 1fr;
-  }
+header h2 {
+  font-size: 1.2rem;
+  opacity: 0.8;
 }
 
 /* =========================
@@ -71,115 +53,160 @@ main {
 ========================= */
 nav ul {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0;
+  justify-content: center;
+  gap: 30px;
   list-style: none;
-  background-color: #222;
-  margin: 0;
-}
-
-nav ul li {
-  display: inline-block;
+  padding: 15px;
 }
 
 nav a {
-  color: white;
+  color: var(--light);
   text-decoration: none;
-  padding: 10px;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
 nav a:hover {
-  color: var(--main-color);
+  color: var(--primary);
 }
 
 /* =========================
-   SECTIONS
+   MAIN GRID
+========================= */
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  padding: 40px;
+}
+
+@media (max-width: 700px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   CARDS (SECTIONS)
 ========================= */
 section {
-  margin: 10px 5px;
-  padding: 15px;
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: var(--bg-light);
+  background: var(--card);
+  color: var(--dark);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* class + element combo */
-section.section-box {
-  background-color: lightyellow;
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+h2 {
+  color: var(--primary);
+  margin-bottom: 10px;
 }
 
 /* =========================
-   TEXT + CONTENT
+   TEXT
 ========================= */
 p {
-  color: hsl(200, 50%, 30%);
+  margin: 10px 0;
+  color: #334155;
 }
 
-/* combinators */
-section p {
-  font-size: 14px;
+h3 {
+  margin-top: 15px;
+  color: #1e293b;
 }
 
-h2 + p {
-  font-style: italic;
-}
-
-h2 ~ p {
-  color: darkblue;
+/* =========================
+   IMAGE
+========================= */
+img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 /* =========================
    MEDIA
 ========================= */
-img {
-  width: 200px;
-  max-width: 100%;
-  min-width: 100px;
-  border-radius: 8px;
+audio, video {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
 /* =========================
-   FORMS
+   FORM
 ========================= */
-input[type="text"],
-input[type="date"],
-select,
-textarea {
-  margin: 5px 0;
-  padding: 5px;
-  border: 1px solid blue;
-  border-radius: 5px;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
+input, select, textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* =========================
+   BUTTON
+========================= */
 button {
-  padding: 8px 15px;
-  border: none;
-  background-color: var(--main-color);
+  background: linear-gradient(135deg, var(--primary), #ff8a65);
   color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
 }
 
 button:active {
-  background-color: gray;
+  transform: scale(0.98);
 }
 
 /* =========================
    FOOTER
 ========================= */
 footer {
-  margin: auto;
-  padding: 20px;
-  border: 2px solid black;
   text-align: center;
-  background-color: #eee;
+  padding: 20px;
+  margin-top: 30px;
+  color: #cbd5f5;
+  opacity: 0.8;
 }
 
 /* =========================
-   MISC
+   SMALL DETAILS
 ========================= */
+details {
+  margin-top: 10px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* remove hr */
 hr {
   display: none;
 }
